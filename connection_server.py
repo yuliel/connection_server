@@ -11,14 +11,6 @@ DEFAULT_PRIMARY = f"{PRIMARY_IP}:{PRIMARY_PORT}"
 
 chat_server = None
 
-@app.route("/primary", methods=['GET'])
-def get_primary():
-    try:
-        resp = make_response(f"{PRIMARY_IP}:{PRIMARY_PORT}", 200)
-        return resp
-    except Exception:
-        abort(500)
-
 @app.route("/chat_server", methods=['GET'])
 def get_chat_server():
     try:
@@ -44,13 +36,6 @@ def put_primary():
         resp = make_response(f"Invalid server details", 400)
     return resp
 
-@app.route("/secondary", methods=['GET'])
-def get_secondary():
-    try:
-        resp = make_response(f"{SECONDARY_IP}:{SECONDARY_PORT}", 200)
-        return resp
-    except Exception:
-        abort(500)
 
 if __name__ == '__main__':
     app.run()
