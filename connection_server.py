@@ -30,7 +30,7 @@ def put_primary():
     try:
         global chat_server
         server_address = request.data.decode().split(":")
-        chat_server = (server_address[0], server_address[1])
+        chat_server = f"{server_address[0]}:{server_address[1]}"
         resp = make_response(f"Primary updated {chat_server}", 200)
     except Exception:
         resp = make_response(f"Invalid server details", 400)
